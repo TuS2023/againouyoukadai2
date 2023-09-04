@@ -5,8 +5,8 @@ class Book < ApplicationRecord
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
 
-  def favorite?(user)
-    favorites.where(user_id: user.id).exists?
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
   def self.search_for(content, method)
